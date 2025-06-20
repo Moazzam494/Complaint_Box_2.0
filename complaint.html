@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Complaint</title>
+  <link rel="stylesheet" href="src/main.css" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-2xl mx-auto bg-white shadow-lg mt-10 rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Submit Complaint</h2>
+
+    <form id="complaintForm" class="space-y-5">
+      <!-- Category -->
+      <div>
+        <label for="category" class="block font-medium">Category</label>
+        <select id="category" required class="w-full border p-2 rounded mt-1">
+          <option value="">Select Category</option>
+          <option>Maintenance</option>
+          <option>Security</option>
+          <option>Cleanliness</option>
+          <option>Cafeteria</option>
+        </select>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label for="description" class="block font-medium">Description</label>
+        <textarea id="description" required rows="4" class="w-full border p-2 rounded mt-1"></textarea>
+      </div>
+
+      <!-- Image Upload -->
+      <div>
+        <label class="block font-medium">Upload Image (Optional)</label>
+        <input type="file" class="w-full" />
+      </div>
+
+      <!-- Anonymous Checkbox -->
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="anonymous" class="h-4 w-4" />
+        <label for="anonymous">Submit as Anonymous</label>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <!-- Success Message -->
+    <div id="successAlert" class="hidden text-green-700 bg-green-100 border border-green-400 p-3 mt-6 rounded text-center">
+      Complaint submitted successfully!
+    </div>
+  </div>
+
+  <script src="js/complaint.js"></script>
+</body>
+</html>

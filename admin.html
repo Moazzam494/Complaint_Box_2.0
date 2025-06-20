@@ -1,0 +1,104 @@
+<!-- 📄 File: admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="src/main.css" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- 🔝 Header -->
+  <header class="bg-white shadow py-4 mb-6">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-600">Admin Dashboard</h1>
+      <a href="admin-login.html" class="text-sm text-red-600 hover:underline">Logout</a>
+    </div>
+  </header>
+
+  <!-- 🔍 Filter Bar -->
+  <section class="max-w-6xl mx-auto px-4">
+    <div class="bg-white p-4 rounded shadow flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div class="w-full md:w-1/2">
+        <label class="block font-medium mb-1">Filter by Category</label>
+        <select class="w-full border rounded p-2">
+          <option>All</option>
+          <option>Maintenance</option>
+          <option>Security</option>
+          <option>Cleanliness</option>
+          <option>Cafeteria</option>
+        </select>
+      </div>
+
+      <div class="w-full md:w-1/2">
+        <label class="block font-medium mb-1">Filter by Status</label>
+        <select class="w-full border rounded p-2">
+          <option>All</option>
+          <option>Pending</option>
+          <option>Resolved</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📋 Complaints Table -->
+  <section class="max-w-6xl mx-auto mt-6 px-4">
+    <div class="bg-white shadow rounded overflow-x-auto">
+      <table class="w-full text-left">
+        <thead class="bg-gray-200 text-gray-700">
+          <tr>
+            <th class="p-3">Title</th>
+            <th class="p-3">Category</th>
+            <th class="p-3">Status</th>
+            <th class="p-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t">
+            <td class="p-3">No Guard at Gate 3</td>
+            <td class="p-3">Security</td>
+            <td class="p-3"><span class="bg-yellow-400 text-white px-2 py-1 rounded text-xs">Pending</span></td>
+            <td class="p-3">
+              <button onclick="openResponseModal()" class="text-sm text-blue-600 hover:underline">Respond</button>
+              <button onclick="markResolved(this)" class="text-sm text-green-600 ml-4 hover:underline">Mark Resolved</button>
+            </td>
+          </tr>
+          <!-- more rows -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ✉️ Response Modal -->
+  <div id="responseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white p-6 rounded shadow w-full max-w-md">
+      <h3 class="text-lg font-bold mb-4">Add Admin Response</h3>
+      <textarea class="w-full border p-2 rounded mb-4" rows="4" placeholder="Write your response..."></textarea>
+      <div class="text-right">
+        <button onclick="closeModal()" class="mr-2 px-4 py-2 rounded bg-gray-300">Cancel</button>
+        <button onclick="closeModal()" class="px-4 py-2 rounded bg-blue-600 text-white">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Simple JS -->
+  <script>
+    function openResponseModal() {
+      document.getElementById("responseModal").classList.remove("hidden");
+      document.getElementById("responseModal").classList.add("flex");
+    }
+
+    function closeModal() {
+      document.getElementById("responseModal").classList.remove("flex");
+      document.getElementById("responseModal").classList.add("hidden");
+    }
+
+    function markResolved(button) {
+      button.parentElement.previousElementSibling.innerHTML =
+        '<span class="bg-green-500 text-white px-2 py-1 rounded text-xs">Resolved</span>';
+    }
+  </script>
+
+</body>
+</html>
